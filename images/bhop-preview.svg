@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" role="img" aria-labelledby="title desc">
+<title id="title">VIP Advanced Bhop</title><desc id="desc">Illustration of the active Bunnyhop countdown with a gold progress frame.</desc>
+<defs><linearGradient id="bg" x2="1" y2=".3"><stop stop-color="#151513"/><stop offset="1" stop-color="#403522"/></linearGradient></defs>
+<rect width="1000" height="250" rx="12" fill="url(#bg)"/>
+<g font-family="Arial, sans-serif"><text x="50" y="78" fill="#dfc287" font-size="19" letter-spacing="3">COUNTER-STRIKE 2  /  VIPCORE</text><text x="48" y="146" fill="#f7efe1" font-weight="bold" font-size="57">VIP Advanced Bhop</text><text x="51" y="191" fill="#c7bba8" font-size="19">Rimmer   ·   v0.1.0</text>
+<rect x="653" y="77" width="295" height="100" rx="8" fill="#1b1916" stroke="#685a40" stroke-width="2"/><path d="M800 77H940Q948 77 948 85V169Q948 177 940 177H661Q653 177 653 169V124" fill="none" stroke="#dcad60" stroke-width="3"/>
+<text x="800" y="122" fill="#f3e8d4" text-anchor="middle" font-size="26" font-weight="bold">Bunnyhop: <tspan fill="#87e691">Active</tspan></text><text x="800" y="153" fill="#e0cda9" text-anchor="middle" font-size="18">4 сек</text></g></svg>

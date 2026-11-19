@@ -1,0 +1,10 @@
+{
+  "bhop_time_wait": "Bhop on saatavilla {0} sekunnin kuluttua!",
+  "bhop_time_ready": "Bhop on taas aktivoitu {0} sekunniksi!",
+  "bhop_time_on_first": "Bhop on aktivoitu {0} sekunniksi!",
+  "bhop_time_off": "Bhop on poistettu kaytosta {0} sekunniksi!",
+  "bhop_time_infinite": "Bhop on aktivoitu!",
+  "bhop_restricttime": "Sait vahinkoa! Bhop poistettu kaytosta {0} sek.",
+  "bhop_restricton": "Bhop on taas saatavilla!",
+  "bhop_first_round_off": "Ensimmainen kierros: Bhop poistettu kaytosta."
+}

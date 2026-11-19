@@ -1,0 +1,10 @@
+{
+  "bhop_time_wait": "Bhop estara disponible en {0} segundos!",
+  "bhop_time_ready": "Bhop se activo de nuevo por {0} segundos!",
+  "bhop_time_on_first": "Bhop se activo por {0} segundos!",
+  "bhop_time_off": "Bhop esta desactivado por {0} segundos!",
+  "bhop_time_infinite": "Bhop activado!",
+  "bhop_restricttime": "Recibiste dano! Bhop desactivado por {0} seg.",
+  "bhop_restricton": "Bhop disponible de nuevo!",
+  "bhop_first_round_off": "Primera ronda: Bhop desactivado."
+}
