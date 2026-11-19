@@ -13,7 +13,7 @@
 ### Requirements
 
 - Linux x64 CS2 server with [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) **1.0.380** and [Fabius VIPCore](https://github.com/partiusfabaa/cs2-VIPCore) **2.0.3**.
-- For the countdown and notification icons, install **PMM_VIPCore 0.1.6 with Bunnyhop HUD support**, [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) and the matching client addon. Servers running VIPCore alone can use chat.
+- Optional, only for the Panorama HUD: [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa) **0.1.6 or newer** (the build with Bunnyhop HUD support), [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) **1.2.03 or newer** and its client addon. Without them the module still works and reports in chat.
 
 ### Features
 
@@ -27,6 +27,22 @@
 2. Extract `addons/` from the ZIP into `game/csgo/`. Keep your existing JSONC when upgrading.
 3. In VIPCore’s `vip.json`, add `"Bhop": 1` to a group for the global cooldown, `"Bhop": 5` for a five-second cooldown, or `"Bhop": 0` for immediate access after freeze time.
 4. Load `VIP_Advanced_Bhop`. It sets `sv_legacy_jump 1` server-wide on load and map start. To disable Bhop in pistol rounds, add `"Bhop"` to `DisableOnPistolRound` in `vip_core.json`.
+
+### Optional: Panorama HUD (PMM_VIPCore)
+
+The module does not depend on PMM_VIPCore. Without it every notification goes to chat; the countdown panel and the MenuManager toasts come from the capability bridge [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa), which publishes `pmm_vipcore:bhop-hud`, `pmm_vipcore:bhop-toast` and `pmm_vipcore:notification`.
+
+1. Install [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) **1.2.03 or newer** with its client addon in MultiAddonManager.
+2. Take [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa) **0.1.6 or newer** — the release that adds Bunnyhop HUD support — and copy `Server-plugins/counterstrikesharp` over `game/csgo/addons/`:
+   - `plugins/PMM_VIPCore/PMM_VIPCore.dll`
+   - `plugins/PMM_VIPCore/harmony/0Harmony.dll` (keep it only in `harmony/`)
+   - `plugins/PMM_VIPCore/lang/ru.json`, `en.json`
+   - `configs/plugins/PMM_VIPCore/PMM_VIPCore.json`
+3. Copy `Content-addonmanager/panorama` from the same release into the MultiAddonManager addon and rebuild it (`pmm_vip.xml`, `pmm_vip.css`, `pmm_vip_theme.css`). Players have to reconnect after a new addon build.
+4. Restart the server completely: `css_plugins reload` does not unload Harmony. Check `css_pmm_vip` in the server console — expect `active=True` and `VipCoreApi.CreateMenu` in `patched`.
+5. Keep `bhop_info` at `2` (Panorama) or `3` (chat + Panorama). Bhop looks the capabilities up on load and once more every second, so a late PMM load is picked up without reloading Bhop; while they are missing, notifications fall back to chat.
+
+Do not put `MenuManagerApi.dll` or `CounterStrikeSharp.API.dll` next to `PMM_VIPCore.dll`. PMM_VIPCore needs CounterStrikeSharp 1.0.378 or newer, which the 1.0.380 requirement above already covers.
 
 ### Configuration
 
@@ -69,7 +85,7 @@ With .NET SDK 10, run `dotnet build VIP_Advanced_Bhop.sln -c Release`. On Window
 ### Что нужно установить
 
 - Сервер CS2 на Linux x64, [CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp) **1.0.380** и [VIPCore от Fabius](https://github.com/partiusfabaa/cs2-VIPCore) **2.0.3**.
-- Для панели и тостов нужны **PMM_VIPCore 0.1.6 с поддержкой HUD Bunnyhop**, [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) и соответствующий клиентский аддон. Для уведомлений в чате достаточно VIPCore.
+- Опционально, только для Panorama HUD: [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa) **0.1.6 или новее** (сборка с поддержкой HUD Bunnyhop), [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) **1.2.03 или новее** и его клиентский аддон. Без них модуль работает, а уведомления идут в чат.
 
 ### Возможности
 
@@ -83,6 +99,22 @@ With .NET SDK 10, run `dotnet build VIP_Advanced_Bhop.sln -c Release`. On Window
 2. Распакуйте `addons/` из архива в `game/csgo/`. При обновлении сохраните свой JSONC.
 3. В нужной группе `vip.json` укажите `"Bhop": 1` для глобального кулдауна, `"Bhop": 5` для индивидуальной задержки в пять секунд или `"Bhop": 0` для доступа сразу после заморозки.
 4. Загрузите `VIP_Advanced_Bhop`. При загрузке и смене карты модуль устанавливает `sv_legacy_jump 1` для всего сервера. Для запрета на пистолетных раундах добавьте `"Bhop"` в массив `DisableOnPistolRound` файла `vip_core.json`.
+
+### Опционально: Panorama HUD (PMM_VIPCore)
+
+Модуль не зависит от PMM_VIPCore. Без него Bhop работает, а все уведомления идут в чат. Панель с отсчётом и тосты MenuManager даёт мост [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa): он публикует capability `pmm_vipcore:bhop-hud`, `pmm_vipcore:bhop-toast` и `pmm_vipcore:notification`.
+
+1. Установите [PanoramaMenuManager](https://github.com/RRimmer/PanoramaMenuManagerCS2) **1.2.03 или новее** и его клиентский аддон в MultiAddonManager.
+2. Возьмите [PMM_VIPCore](https://github.com/RRimmer/PMM_VIPCore_partiusfabaa) **0.1.6 или новее** — релиз с поддержкой HUD Bunnyhop — и скопируйте `Server-plugins/counterstrikesharp` в `game/csgo/addons/`. Появятся:
+   - `plugins/PMM_VIPCore/PMM_VIPCore.dll`
+   - `plugins/PMM_VIPCore/harmony/0Harmony.dll` (только в `harmony/`)
+   - `plugins/PMM_VIPCore/lang/ru.json`, `en.json`
+   - `configs/plugins/PMM_VIPCore/PMM_VIPCore.json`
+3. Скопируйте `Content-addonmanager/panorama` из того же релиза в аддон MultiAddonManager и пересоберите его (`pmm_vip.xml`, `pmm_vip.css`, `pmm_vip_theme.css`). После новой сборки аддона игрокам нужно перезайти.
+4. Полностью перезапустите сервер: `css_plugins reload` не выгружает Harmony. Проверьте в консоли сервера `css_pmm_vip` — ожидается `active=True` и `VipCoreApi.CreateMenu` в `patched`.
+5. Оставьте `bhop_info` = `2` (панорама) или `3` (чат и панорама). Bhop ищет capability при загрузке и затем раз в секунду, поэтому PMM можно загрузить позже без перезагрузки Bhop. Пока их нет, уведомления идут в чат.
+
+`MenuManagerApi.dll` и `CounterStrikeSharp.API.dll` рядом с `PMM_VIPCore.dll` не кладите. PMM_VIPCore требует CounterStrikeSharp 1.0.378 или новее — требование 1.0.380 выше это покрывает.
 
 ### Конфиг
 
