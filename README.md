@@ -2,6 +2,12 @@
 
 [![Boosty](https://img.shields.io/badge/Boosty-Support%20%2F%20Поддержать-F15F2C?style=for-the-badge&logo=boosty&logoColor=white)](https://boosty.to/rimmerquinella)
 
+<h3 align="center">Больше моих плагинов и более подробная информация на моем сайте</h3>
+<h2 align="center"><a href="https://genesis-cs.space/menuconstructor/menumanager/plugins/">GENESIS-CS.SPACE</a></h2>
+<a href="https://genesis-cs.space/menuconstructor/menumanager/plugins/">
+  <img src="images/PMMPluginsMini.jpg" alt="PMM MenuManager — many plugins in one place">
+</a>
+
 [![ADVBhop.jpg](images/ADVBhop.jpg)](https://genesis-cs.space/menuconstructor/menumanager/plugins/ "ADVBhop.jpg")
 
 [English](#english) · [Русский](#русский) · [PanoramaMenuManager website](https://genesis-cs.space/menuconstructor/index.html)
